@@ -1,0 +1,8 @@
+Sentiment-Analysis-Dataset.zip
+Sentiment Analysis Dataset.csv
+__pycache__
+*.__pycache__
+twitter_secrets.json
+.vscode
+.ipynb_checkpoints
+*.ipynb
