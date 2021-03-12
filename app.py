@@ -32,11 +32,20 @@ def predict():
     with gzip.open('sentiment_model.dill.gz', "rb") as f:
         model = dill.load(f)
 
-    proba = model.predict_proba([tweet])[0, 1]
+    proba = round(model.predict_proba([tweet])[0, 1] * 100, 2)
 
+    p = model.predict([tweet])
+
+    if p == 0:
+        result = "negative"
+    elif p == 1:
+        result = 'positive'
+    value = [proba, result]
     #positive class = class 1
     #negative class = class 0
 
-    return "Positive sentiment {}".format(proba)
+    return render_template('result.html', value=value)
+
+
 if __name__ == '__main__':
     app.run()
